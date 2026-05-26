@@ -1,2 +1,2 @@
 # cub3D-remake
-recreating for better understanding of the mandatory project requirements and the project architecture
+Recreating for better understanding of the mandatory project requirements and the project architecture. Specifically optimized for Linux only.
