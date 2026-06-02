@@ -6,23 +6,25 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 18:30:13 by ccastro           #+#    #+#             */
-/*   Updated: 2026/05/26 19:36:55 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/02 21:50:54 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	// argument checks
-	// initialization of variables and structures
-	// parse config
-	// parse map
+	t_game	game;
+
+	validate_arguments(ac, av);
+	init_game(&game);
+	parse_scene(&game, av[1]);
 	// validate map
 	// init mlx
 	// execute raycasting
 	// execute rendering
 	// execute movement
 	// loop mlx
+	free_resources(&game);
 	return (EXIT_SUCCESS);
 }
