@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:20:13 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/01 11:06:15 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/04 19:27:30 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <errno.h>
+# include <string.h>
 
-void	error_system(t_game *game, char *context);
-void	error_arguments(char *msg);
-void	error_parse(t_game *game, char *msg);
+void	error_system(t_game *game, const char *context, const char *line);
+void	error_arguments(const char *msg);
+void	error_parse(t_game *game, const char *msg, const char *line);
 
 #endif

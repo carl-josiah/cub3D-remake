@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_resources.c                                   :+:      :+:    :+:   */
+/*   print_state.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/01 10:34:47 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/02 21:51:34 by ccastro          ###   ########.fr       */
+/*   Created: 2026/06/05 14:02:08 by ccastro           #+#    #+#             */
+/*   Updated: 2026/06/07 15:19:59 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/free.h"
+#include "../../include/print.h"
 
-static void	free_parser(t_config *conf)
+void	print_state(const char *line, const t_state state)
 {
-	if (conf->file.lines)
-		ft_free_str_array(&conf->file.lines);
-}
-
-void	free_resources(t_game *game)
-{
-	free_parser(&game->conf);
+	if (!line || (state < 0 || state > 1))
+		return ;
+	if (state == STATE_CONFIG && line)
+		printf("STATE_CONFIG: %s", line);
+	else if (state == STATE_MAP && line)
+		printf("STATE_MAP: %s", line);
+	else if (state == STATE_CONFIG)
+		printf("STATE_CONFIG\n");
+	else if (state == STATE_MAP)
+		printf("STATE_MAP\n");
 }

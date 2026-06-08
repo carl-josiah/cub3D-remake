@@ -16,6 +16,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-void	free_resources(t_game *game);
+void	free_game(t_game *game);
 
 #endif

@@ -6,19 +6,11 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 11:13:56 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/02 21:19:53 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/07 15:16:24 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parse.h"
-
-static int	open_fd(const char *file_path, int *fd)
-{
-	*fd = open(file_path, O_RDONLY);
-	if (*fd < 0)
-		return (0);
-	return (1);
-}
 
 static size_t	count_lines(int fd)
 {
@@ -26,6 +18,8 @@ static size_t	count_lines(int fd)
 	char	*line;
 
 	line_count = 0;
+	if (fd < 0)
+		return (0);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -40,6 +34,8 @@ static size_t	count_lines(int fd)
 
 static int	allocate_lines_ptr(t_game *game)
 {
+	if (!game)
+		return (0);
 	game->conf.file.lines = ft_calloc(game->conf.file.line_count + 1,
 			sizeof(*game->conf.file.lines));
 	if (!game->conf.file.lines)
@@ -53,6 +49,8 @@ static int	allocate_lines(t_game *game, int fd)
 	size_t	i;
 
 	i = 0;
+	if (!game || fd < 0)
+		return (0);
 	while (i < game->conf.file.line_count)
 	{
 		game->conf.file.lines[i] = get_next_line(fd);
@@ -77,15 +75,17 @@ void	read_scene(t_game *game, const char *file_path)
 {
 	int	fd;
 
+	if (!game || !file_path)
+		return ;
 	if (!open_fd(file_path, &fd))
-		error_system(game, ERROR_OPEN);
+		error_system(game, ERROR_OPEN, file_path);
 	game->conf.file.line_count = count_lines(fd);
 	close(fd);
 	if (!allocate_lines_ptr(game))
-		error_system(game, ERROR_CALLOC);
+		error_system(game, ERROR_CALLOC, NULL);
 	if (!open_fd(file_path, &fd))
-		error_system(game, ERROR_OPEN);
+		error_system(game, ERROR_OPEN, file_path);
 	if (!allocate_lines(game, fd))
-		error_system(game, ERROR_MALLOC);
+		error_system(game, ERROR_MALLOC, NULL);
 	close(fd);
 }

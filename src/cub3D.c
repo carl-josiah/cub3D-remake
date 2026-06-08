@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 18:30:13 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/02 21:50:54 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/07 15:11:49 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	main(int ac, char **av)
 	// execute rendering
 	// execute movement
 	// loop mlx
-	free_resources(&game);
+	free_game(&game);
 	return (EXIT_SUCCESS);
 }

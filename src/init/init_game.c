@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 21:00:41 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/02 21:51:20 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/06 22:55:13 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	init_config(t_config *conf)
 	i = 0;
 	while (i < TEX_COUNT)
 	{
-		conf->tex.path[i] = NULL;
+		conf->tex.paths[i] = NULL;
 		++i;
 	}
 	i = 0;
@@ -30,6 +30,7 @@ static void	init_config(t_config *conf)
 	}
 	conf->file.lines = NULL;
 	conf->file.line_count = 0;
+	conf->bits = 0;
 }
 
 void	init_game(t_game *game)

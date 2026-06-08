@@ -6,21 +6,28 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:41:06 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/02 20:53:13 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/08 17:08:01 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 # include "../lib/incs/libft.h"
-# include "error.h"
 # include "define.h"
-# include "struct.h"
+# include "error.h"
 # include "print.h"
+# include "struct.h"
 # include <stdio.h>
 # include <unistd.h>
 
 void	read_scene(t_game *game, const char *file_path);
 void	parse_scene(t_game *game, const char *file_path);
+void	parse_config(t_game *game, char *line, t_config *conf);
+void	parse_map(t_game *game, char *line, t_map *map);
+void	count_and_skip(t_game *game, char **line, t_scene_id id);
+int		open_fd(const char *file_path, int *fd);
+int		count_commas(const char *line);
+void	parse_color(t_game *game, char *line, t_scene_id id);
+void	parse_texture(t_game *game, char *line, t_scene_id id);
 
 #endif

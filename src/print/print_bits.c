@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_parse.c                                      :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/31 23:15:38 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/07 17:33:57 by ccastro          ###   ########.fr       */
+/*   Created: 2026/06/04 18:42:24 by ccastro           #+#    #+#             */
+/*   Updated: 2026/06/07 14:49:02 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/error.h"
+#include "../../include/print.h"
 
-void	error_parse(t_game *game, const char *msg, const char *line)
+void	print_bits(const int num)
 {
-	write(STDERR_FILENO, "Error\n", 6);
-	if (msg)
-		write(STDERR_FILENO, msg, ft_strlen(msg));
-	if (line)
+	int	total_bits;
+	int	i;
+	int	bit;
+
+	total_bits = sizeof(num) * 8;
+	i = total_bits - 1;
+	bit = 0;
+	while (i >= 0)
 	{
-		write(STDERR_FILENO, ": ", 2);
-		write(STDERR_FILENO, line, ft_strlen(line));
+		bit = (num >> i) & 1;
+		printf("%d", bit);
+		--i;
 	}
-	if (msg || line)
-		write(STDERR_FILENO, "\n", 1);
-	if (game)
-		free_game(game);
-	exit(EXIT_FAILURE);
+	printf("\n");
 }

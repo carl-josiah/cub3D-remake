@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:42:31 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/01 20:33:35 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/07 16:39:33 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@
 # define ERROR_SPACE "Invalid argument (must not contain spaces)"
 
 // error_parse.c
-# define ERROR_CONFIG "Invalid Configuration"
+# define ERROR_EMPTY "Empty file"
+# define ERROR_DUP "Duplicate identifier"
+# define ERROR_ID "Invalid identifier"
+# define ERROR_PATH_COUNT "Invalid path count (must be 1)"
+# define ERROR_COLOR "Invalid color"
+
+// parse_config.c
+# define SPACES " \t\n\v\f\r"
+# define CHANNEL_COUNT 3
+
+// parse_scene.c
+# define MAP "10NSWE \t\n"
 
 #endif

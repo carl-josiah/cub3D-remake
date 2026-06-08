@@ -1,6 +1,6 @@
 NAME := cub3D
 
-CC := cc
+CC := cc -g3
 CFLAGS := # -Wall -Wextra -Werror
 
 RM := rm -f
@@ -22,15 +22,16 @@ LIB := $(LIB_DIR)/libft.a
 MLX := $(MLX_DIR)/libmlx.a
 MLX_FLAGS := -lXext -lX11 -lm
 
-PARSE_SRC := $(addprefix $(PARSE_DIR)/, parse_config.c parse_map.c parse_scene.c read_scene.c)
-ERROR_SRC := $(addprefix $(ERROR_DIR)/, error_arguments.c error_system.c)
-INIT_SRC := $(addprefix $(INIT_DIR)/, init_game.c)
-VALIDATE_SRC := $(addprefix $(VALIDATE_DIR)/, validate_arguments.c)
-FREE_SRC := $(addprefix $(FREE_DIR)/, free_resources.c)
-PRINT_SRC := $(addprefix $(PRINT_DIR)/, print_lines.c)
+PARSE_SRC := $(addprefix $(PARSE_DIR)/,	config/parse_config.c parse_map.c parse_scene.c read_scene.c \
+										parse_utils.c config/parse_color.c config/parse_texture.c)
+ERROR_SRC := $(addprefix $(ERROR_DIR)/,	error_arguments.c error_system.c error_parse.c)
+INIT_SRC := $(addprefix $(INIT_DIR)/,	init_game.c)
+VALIDATE_SRC := $(addprefix $(VALIDATE_DIR)/,	validate_arguments.c)
+FREE_SRC := $(addprefix $(FREE_DIR)/,	free_game.c)
+PRINT_SRC := $(addprefix $(PRINT_DIR)/,	print_lines.c print_bits.c print_state.c print_paths.c)
 
-SRC := $(SRC_DIR)/cub3D.c $(PARSE_SRC) $(ERROR_SRC) $(INIT_SRC) \
-	   $(VALIDATE_SRC) $(FREE_SRC) $(PRINT_SRC)
+SRC := $(SRC_DIR)/cub3D.c	$(PARSE_SRC) $(ERROR_SRC) $(INIT_SRC) \
+	   						$(VALIDATE_SRC) $(FREE_SRC) $(PRINT_SRC)
 OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 INCLUDE := -Iinclude -I$(LIB_DIR) -I$(MLX_DIR)
 

@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_parse.c                                      :+:      :+:    :+:   */
+/*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/31 23:15:38 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/07 17:33:57 by ccastro          ###   ########.fr       */
+/*   Created: 2026/06/01 10:34:47 by ccastro           #+#    #+#             */
+/*   Updated: 2026/06/07 14:35:25 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/error.h"
+#include "../../include/free.h"
 
-void	error_parse(t_game *game, const char *msg, const char *line)
+static void	free_paths(char *paths[])
 {
-	write(STDERR_FILENO, "Error\n", 6);
-	if (msg)
-		write(STDERR_FILENO, msg, ft_strlen(msg));
-	if (line)
+	size_t	i;
+
+	i = 0;
+	if (paths)
 	{
-		write(STDERR_FILENO, ": ", 2);
-		write(STDERR_FILENO, line, ft_strlen(line));
+		while (i < TEX_COUNT)
+		{
+			if (paths[i])
+				free(paths[i]);
+			++i;
+		}
 	}
-	if (msg || line)
-		write(STDERR_FILENO, "\n", 1);
-	if (game)
-		free_game(game);
-	exit(EXIT_FAILURE);
+}
+
+static void	free_parser(t_config *conf)
+{
+	if (conf->file.lines)
+		ft_free_str_array(&conf->file.lines);
+}
+
+void	free_game(t_game *game)
+{
+	free_parser(&game->conf);
+	free_paths(game->conf.tex.paths);
 }

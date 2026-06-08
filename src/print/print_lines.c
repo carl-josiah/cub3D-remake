@@ -6,13 +6,13 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 20:15:05 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/02 20:18:03 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/07 14:48:51 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/print.h"
 
-void	print_lines(char **lines)
+void	print_lines(const char **lines)
 {
 	if (!lines)
 		return ;
