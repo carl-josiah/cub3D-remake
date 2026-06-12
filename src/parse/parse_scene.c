@@ -12,11 +12,11 @@
 
 #include "../../include/parse.h"
 
-static void	count_map_lines(t_map *map, char **lines, int *count_lines)
-{
-	++map->grid.size.y;
-	*count_lines = 0;
-}
+// static void	count_map_lines(t_map *map, char **lines, int *count_lines)
+// {
+// 	++map->grid.size.y;
+// 	*count_lines = 0;
+// }
 
 static void	handle_line(t_game *game, char *line, t_state state)
 {
@@ -71,27 +71,27 @@ void	parse_scene(t_game *game, const char *file_path)
 {
 	size_t	i;
 	t_state	state;
-	int		count;
+	// int		count;
 
 	if (!game || !file_path)
 		return ;
 	read_scene(game, file_path);
-	if (!game->conf.file.lines || !*game->conf.file.lines)
+	if (!game->file.lines || !*game->file.lines)
 		error_parse(game, ERROR_EMPTY, NULL);
-	if (is_file_spaces(game->conf.file.lines, game->conf.file.line_count))
+	if (is_file_spaces(game->file.lines, game->file.line_count))
 		error_parse(game, ERROR_EMPTY, NULL);
 	i = 0;
 	state = STATE_CONFIG;
-	count = 1;
-	while (i < game->conf.file.line_count)
+	// count = 1;
+	while (i < game->file.line_count)
 	{
-		if (!is_line_empty(game->conf.file.lines[i]))
+		if (!is_line_empty(game->file.lines[i]))
 		{
-			identify_state(game->conf.file.lines[i], game->conf.bits, &state);
+			identify_state(game->file.lines[i], game->conf.bits, &state);
 			// if (state == STATE_MAP && count)
-			handle_line(game, game->conf.file.lines[i], state);
+			handle_line(game, game->file.lines[i], state);
 		}
 		++i;
 	}
-	printf("%zu\n", game->conf.file.line_count);
+	printf("%zu\n", game->file.line_count);
 }

@@ -1,7 +1,7 @@
 NAME 				:= cub3D
 
 CC 					:= cc -g3
-CFLAGS 				:= # -Wall -Wextra -Werror
+CFLAGS 				:= -Wall -Wextra -Werror
 
 RM 					:= rm -f
 RMDIR 				:= rm -rf

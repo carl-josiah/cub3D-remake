@@ -28,14 +28,14 @@ static void	free_paths(char *paths[])
 	}
 }
 
-static void	free_parser(t_config *conf)
+static void	free_file(t_file *file)
 {
-	if (conf->file.lines)
-		ft_free_str_array(&conf->file.lines);
+	if (file->lines)
+		ft_free_str_array(&file->lines);
 }
 
 void	free_game(t_game *game)
 {
-	free_parser(&game->conf);
+	free_file(&game->file);
 	free_paths(game->conf.tex.paths);
 }

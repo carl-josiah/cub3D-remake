@@ -28,13 +28,18 @@ static void	init_config(t_config *conf)
 		conf->col.rgb[i] = 0;
 		++i;
 	}
-	conf->file.lines = NULL;
-	conf->file.line_count = 0;
 	conf->bits = 0;
+}
+
+static void	init_file(t_file *file)
+{
+	file->lines = NULL;
+	file->line_count = 0;
 }
 
 void	init_game(t_game *game)
 {
 	ft_bzero(game, sizeof(*game));
+	init_file(&game->file);
 	init_config(&game->conf);
 }

@@ -82,7 +82,6 @@ typedef struct s_config
 {
 	t_tex		tex;
 	t_col		col;
-	t_file		file;
 	int			bits;
 }				t_config;
 
@@ -92,6 +91,7 @@ typedef struct s_game
 	void		(*destructor)(struct s_game *self);
 	t_config	conf;
 	t_map		map;
+	t_file		file;
 }				t_game;
 
 #endif
