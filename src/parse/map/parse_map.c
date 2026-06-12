@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_paths.c                                      :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/06 22:58:48 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/07 14:49:54 by ccastro          ###   ########.fr       */
+/*   Created: 2026/06/05 14:22:11 by ccastro           #+#    #+#             */
+/*   Updated: 2026/06/11 14:25:52 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/print.h"
+#include "../../../include/parse.h"
 
-void	print_paths(const char *paths[])
+void	parse_map(t_game *game, char *line, t_map *map)
 {
-	t_scene_id	i;
-
-	i = 0;
-	if (paths)
-	{
-		while (i < TEX_COUNT)
-		{
-			if (i == 0)
-				printf("NO: %s\n", paths[i]);
-			else if (i == 1)
-				printf("SO: %s\n", paths[i]);
-			else if (i == 2)
-				printf("WE: %s\n", paths[i]);
-			else if (i == 3)
-				printf("EA: %s\n", paths[i]);
-			++i;
-		}
-	}
+	(void)game;
+	(void)line;
+	(void)map;
 }

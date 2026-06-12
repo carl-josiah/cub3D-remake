@@ -1,39 +1,79 @@
-NAME := cub3D
+NAME 				:= cub3D
 
-CC := cc -g3
-CFLAGS := # -Wall -Wextra -Werror
+CC 					:= cc -g3
+CFLAGS 				:= # -Wall -Wextra -Werror
 
-RM := rm -f
-RMDIR := rm -rf
+RM 					:= rm -f
+RMDIR 				:= rm -rf
 
-SRC_DIR := src
-OBJ_DIR := obj
-LIB_DIR := lib
-MLX_DIR := minilibx-linux
+SRC_DIR 			:= src
+OBJ_DIR 			:= obj
+LIB_DIR 			:= lib
+MLX_DIR 			:= minilibx-linux
 
-PARSE_DIR := $(SRC_DIR)/parse
-ERROR_DIR := $(SRC_DIR)/error
-INIT_DIR := $(SRC_DIR)/init
-VALIDATE_DIR := $(SRC_DIR)/validate
-FREE_DIR := $(SRC_DIR)/free
-PRINT_DIR := $(SRC_DIR)/print
+PARSE_CONFIG_DIR 	:= config
+PARSE_MAP_DIR		:= map
+PARSE_DIR 			:= $(SRC_DIR)/parse
 
-LIB := $(LIB_DIR)/libft.a
-MLX := $(MLX_DIR)/libmlx.a
-MLX_FLAGS := -lXext -lX11 -lm
+ERROR_DIR 			:= $(SRC_DIR)/error
 
-PARSE_SRC := $(addprefix $(PARSE_DIR)/,	config/parse_config.c parse_map.c parse_scene.c read_scene.c \
-										parse_utils.c config/parse_color.c config/parse_texture.c)
-ERROR_SRC := $(addprefix $(ERROR_DIR)/,	error_arguments.c error_system.c error_parse.c)
-INIT_SRC := $(addprefix $(INIT_DIR)/,	init_game.c)
-VALIDATE_SRC := $(addprefix $(VALIDATE_DIR)/,	validate_arguments.c)
-FREE_SRC := $(addprefix $(FREE_DIR)/,	free_game.c)
-PRINT_SRC := $(addprefix $(PRINT_DIR)/,	print_lines.c print_bits.c print_state.c print_paths.c)
+INIT_DIR 			:= $(SRC_DIR)/init
 
-SRC := $(SRC_DIR)/cub3D.c	$(PARSE_SRC) $(ERROR_SRC) $(INIT_SRC) \
-	   						$(VALIDATE_SRC) $(FREE_SRC) $(PRINT_SRC)
-OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-INCLUDE := -Iinclude -I$(LIB_DIR) -I$(MLX_DIR)
+VALIDATE_DIR 		:= $(SRC_DIR)/validate
+
+FREE_DIR 			:= $(SRC_DIR)/free
+
+PRINT_PARSE_DIR 	:= print_parse
+PRINT_DIR 			:= $(SRC_DIR)/print
+
+METHOD_DIR			:= $(SRC_DIR)/method
+
+LIB 				:= $(LIB_DIR)/libft.a
+MLX 				:= $(MLX_DIR)/libmlx.a
+MLX_FLAGS 			:= -lXext -lX11 -lm
+
+PARSE_MAP_SRC		:= $(addprefix $(PARSE_MAP_DIR)/,		parse_map.c)
+PARSE_CONFIG_SRC	:= $(addprefix $(PARSE_CONFIG_DIR)/,	parse_config.c \
+															parse_color.c \
+															parse_texture.c \
+															parse_color_utils.c)
+PARSE_SRC			:= $(addprefix $(PARSE_DIR)/,			$(PARSE_CONFIG_SRC) \
+															$(PARSE_MAP_SRC) \
+															parse_scene.c \
+															read_scene.c \
+															parse_utils.c)
+
+ERROR_SRC 			:= $(addprefix $(ERROR_DIR)/,			error_arguments.c \
+					   										error_system.c \
+															error_parse.c)
+
+INIT_SRC 			:= $(addprefix $(INIT_DIR)/,			init_game.c)
+
+VALIDATE_SRC 		:= $(addprefix $(VALIDATE_DIR)/,		validate_arguments.c)
+
+FREE_SRC 			:= $(addprefix $(FREE_DIR)/,			free_game.c)
+
+PRINT_PARSE_SRC 	:= $(addprefix $(PRINT_PARSE_DIR)/,		print_lines.c \
+					   										print_bits.c \
+															print_state.c \
+															print_paths.c \
+															print_hex.c \
+															print_channels.c)
+PRINT_SRC			:= $(addprefix $(PRINT_DIR)/,			$(PRINT_PARSE_SRC))
+
+METHOD_SRC			:= $(addprefix $(METHOD_DIR)/,			player.c \
+					   										game.c \
+															grid.c)
+
+SRC 				:= $(SRC_DIR)/cub3D.c					$(PARSE_SRC) \
+					   										$(ERROR_SRC) \
+															$(INIT_SRC) \
+															$(VALIDATE_SRC) \
+															$(FREE_SRC) \
+															$(PRINT_SRC) \
+															$(METHOD_SRC)
+OBJ 				:= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+INCLUDE 			:= -Iinclude -I$(LIB_DIR) -I$(MLX_DIR)
 
 all: lib mlx $(NAME)
 

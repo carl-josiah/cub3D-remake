@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/30 21:00:41 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/10 18:48:36 by ccastro          ###   ########.fr       */
+/*   Created: 2026/06/10 18:49:22 by ccastro           #+#    #+#             */
+/*   Updated: 2026/06/10 19:07:53 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/init.h"
+#include "../../../include/print.h"
 
-static void	init_config(t_config *conf)
+void	print_hex(t_col *color)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < TEX_COUNT)
+	if (color->rgb[RGB_FLOOR])
 	{
-		conf->tex.paths[i] = NULL;
-		++i;
+		printf("floor_color: ");
+		printf("0x%06X\n", color->rgb[RGB_FLOOR]);
 	}
-	i = 0;
-	while (i < COL_COUNT)
+	if (color->rgb[RGB_CEILING])
 	{
-		conf->col.rgb[i] = 0;
-		++i;
+		printf("ceiling_color: ");
+		printf("0x%06X\n", color->rgb[RGB_CEILING]);
 	}
-	conf->file.lines = NULL;
-	conf->file.line_count = 0;
-	conf->bits = 0;
-}
-
-void	init_game(t_game *game)
-{
-	ft_bzero(game, sizeof(*game));
-	init_config(&game->conf);
 }

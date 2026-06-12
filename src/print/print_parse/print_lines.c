@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   print_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/30 21:00:41 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/10 18:48:36 by ccastro          ###   ########.fr       */
+/*   Created: 2026/06/02 20:15:05 by ccastro           #+#    #+#             */
+/*   Updated: 2026/06/07 14:48:51 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/init.h"
+#include "../../../include/print.h"
 
-static void	init_config(t_config *conf)
+void	print_lines(char **lines)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < TEX_COUNT)
+	if (!lines)
+		return ;
+	while (*lines)
 	{
-		conf->tex.paths[i] = NULL;
-		++i;
+		printf("%s", *lines);
+		lines++;
 	}
-	i = 0;
-	while (i < COL_COUNT)
-	{
-		conf->col.rgb[i] = 0;
-		++i;
-	}
-	conf->file.lines = NULL;
-	conf->file.line_count = 0;
-	conf->bits = 0;
-}
-
-void	init_game(t_game *game)
-{
-	ft_bzero(game, sizeof(*game));
-	init_config(&game->conf);
 }

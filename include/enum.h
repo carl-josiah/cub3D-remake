@@ -6,7 +6,7 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/31 02:31:43 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/06 22:44:17 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/11 14:30:09 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ typedef enum e_path
 	PATH_WEST = 2,
 	PATH_EAST = 3
 }	t_path;
+
+typedef enum e_rgb
+{
+	RGB_FLOOR = 0,
+	RGB_CEILING = 1
+}	t_rgb;
 
 typedef enum e_state
 {

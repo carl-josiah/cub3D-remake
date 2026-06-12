@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/30 21:00:41 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/10 18:48:36 by ccastro          ###   ########.fr       */
+/*   Created: 2026/06/04 18:42:24 by ccastro           #+#    #+#             */
+/*   Updated: 2026/06/07 14:49:02 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/init.h"
+#include "../../../include/print.h"
 
-static void	init_config(t_config *conf)
+void	print_bits(int num)
 {
-	size_t	i;
+	int	total_bits;
+	int	i;
+	int	bit;
 
-	i = 0;
-	while (i < TEX_COUNT)
+	total_bits = sizeof(num) * 8;
+	i = total_bits - 1;
+	bit = 0;
+	while (i >= 0)
 	{
-		conf->tex.paths[i] = NULL;
-		++i;
+		bit = (num >> i) & 1;
+		printf("%d", bit);
+		--i;
 	}
-	i = 0;
-	while (i < COL_COUNT)
-	{
-		conf->col.rgb[i] = 0;
-		++i;
-	}
-	conf->file.lines = NULL;
-	conf->file.line_count = 0;
-	conf->bits = 0;
-}
-
-void	init_game(t_game *game)
-{
-	ft_bzero(game, sizeof(*game));
-	init_config(&game->conf);
+	printf("\n");
 }

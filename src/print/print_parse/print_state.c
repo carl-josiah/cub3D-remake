@@ -6,13 +6,13 @@
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 14:02:08 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/07 15:19:59 by ccastro          ###   ########.fr       */
+/*   Updated: 2026/06/11 14:35:33 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/print.h"
+#include "../../../include/print.h"
 
-void	print_state(const char *line, const t_state state)
+void	print_state(char *line, t_state state)
 {
 	if (!line || (state < 0 || state > 1))
 		return ;

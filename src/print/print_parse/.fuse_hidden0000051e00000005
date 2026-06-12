@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   print_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastro <ccastro@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 14:22:11 by ccastro           #+#    #+#             */
-/*   Updated: 2026/06/05 14:23:13 by ccastro          ###   ########.fr       */
+/*   Created: 2026/06/02 20:15:05 by ccastro           #+#    #+#             */
+/*   Updated: 2026/06/07 14:48:51 by ccastro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/parse.h"
+#include "../../include/print.h"
 
-void	parse_map(t_game *game, char *line, t_map *map)
+void	print_lines(char **lines)
 {
-	(void)game;
-	(void)line;
-	(void)map;
+	if (!lines)
+		return ;
+	while (*lines)
+	{
+		printf("%s", *lines);
+		lines++;
+	}
 }
